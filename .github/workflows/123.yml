@@ -12,4 +12,4 @@ jobs:
               with:
                   token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
                   channel: ${{ secrets.CHANGELOG_CHANNEL_ID }}
-                  changelog: ${{ "Hello Budy!" }}
+                  changelog: "Hello Budy!"
