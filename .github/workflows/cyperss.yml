@@ -20,15 +20,15 @@ jobs:
             - name: update node manager
               run: npm i npm@latest
 
-            # - name: install all dependencies
-            #   run: npm i
+            - name: install all dependencies
+              run: npm i
 
-            # - name: Start tests
-            #   run: npm run cypress:execution
+            - name: Start tests
+              run: npm run cypress:execution
 
-            # - name: Generate report
-            #   if: always()
-            #   run: node cucumber-html-report.js
+            - name: Generate report
+              if: always()
+              run: node cucumber-html-report.js
 
             # - name: Upload artifact cucumber html report
             #   uses: actions/upload-artifact@v2
