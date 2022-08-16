@@ -17,8 +17,8 @@ jobs:
               with:
                   node-version: ${{ matrix.node-version }}
 
-            - name: update node manager
-              run: npm i npm@latest
+            # - name: update node manager
+            #   run: npm i npm@latest
 
             - name: install all dependencies
               run: npm i
