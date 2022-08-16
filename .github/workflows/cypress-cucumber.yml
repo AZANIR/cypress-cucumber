@@ -1,0 +1,49 @@
+name: Cypress-Cucumber Tests
+on:
+    push:
+        branches: [master]
+jobs:
+    Run_test:
+        runs-on: windows-latest
+        strategy:
+            matrix:
+                node-version: [14.17.0]
+                # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+        steps:
+            - uses: actions/checkout@v2
+            - name: Use Node.js ${{ matrix.node-version }}
+              uses: actions/setup-node@v2
+              with:
+                  node-version: ${{ matrix.node-version }}
+                  cache: "npm"
+            - name: update node manager
+              run: npm i npm@latest
+            - name: install all dependencies
+              run: npm i
+            # - name: Install Cypress
+            #   run: npm install cypress
+            # - name: Install cypress-cucumber-preprocessor
+            #   run: npm install @badeball/cypress-cucumber-preprocessor
+            # - name: Install cypress-browserify-preprocessor
+            #   run: npm install --save-dev @cypress/browserify-preprocessor
+            # - name: Install reporter dev
+            #   run: npm install multiple-cucumber-html-reporter --save-dev
+            - name: run test
+              run: npm run cypress:run
+            - name: Generate reports
+              if: always()
+              run: npm run cypress:report
+            - name: Upload artifact cucumber-report
+              uses: actions/upload-artifact@v3
+              if: always()
+              with:
+                  name: cucumber-report
+                  path: ./reports/cucumber-htmlreport
+                  retention-days: 5
+            - name: Deploy to pages
+              if: always()
+              uses: peaceiris/actions-gh-pages@v3.7.3
+              with:
+                  github_token: ${{ secrets.GITHUB_TOKEN }}
+                  publish_branch: gh-pages
+                  publish_dir: reports/cucumber-htmlreport/
