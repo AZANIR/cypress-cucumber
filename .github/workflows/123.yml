@@ -1,15 +1,22 @@
 name: Post changelog
 on:
     push:
-        branches: [main, master]
+        branches: [master]
 
 jobs:
     post-changelog:
         runs-on: ubuntu-latest
         steps:
-            - name: Send changelog to telegram channel
-              uses: tyagdit/release-telegram-action@master
+            - name: copy reports
+              run: cp -R ./cucumber-*.* cucumber-report
+            - name: Upload artifact cucumber-report
+              uses: actions/upload-artifact@v3
+              if: always()
               with:
-                  token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-                  channel: ${{ secrets.CHANGELOG_CHANNEL_ID }}
-                  changelog: "Hello Budy!"
+                  name: cucumber-report
+                  path: ./cucumber-*.*
+                  retention-days: 5
+            - name: Deploy 🚀
+              uses: JamesIves/github-pages-deploy-action@v4
+              with:
+                  folder: docs
