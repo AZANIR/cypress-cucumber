@@ -9,7 +9,7 @@ jobs:
         steps:
             # - name: copy reports
             #   run: cp ./cucumber-messages.ndjson cucumber-report
-            - run: cp ./cucumber-report.html cucumber-report
+            - run: cp -r $(pwd)/cucumber-report.html $(pwd)/cucumber-report
             - name: Upload artifact cucumber-report
               uses: actions/upload-artifact@v3
               if: always()
