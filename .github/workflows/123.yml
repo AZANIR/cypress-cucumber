@@ -15,7 +15,7 @@ jobs:
               if: always()
               with:
                   name: cucumber-report
-                  path: ./cucumber-*.*
+                  path: cucumber-*.*
                   retention-days: 5
             - name: Deploy 🚀
               uses: JamesIves/github-pages-deploy-action@v4
