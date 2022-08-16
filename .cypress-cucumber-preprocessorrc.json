@@ -2,14 +2,11 @@
     "json": {
         "enabled": true,
         "output": "jsonlogs/log.json",
-        "formater": "cucumber-json-formatter.exe"
+        "formater": "cucumber-json-formatter-ubuntu"
     },
     "messages": {
         "enabled": true,
         "output": "jsonlogs/messages.ndjson"
-    },
-    "html": {
-        "enabled": true
     },
     "stepDefinitions": [
         "[filepath]/**/*.{js,ts}",
