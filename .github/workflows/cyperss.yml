@@ -4,8 +4,8 @@ on:
         branches: [master]
 jobs:
     Run_test:
-        # runs-on: ubuntu-20.04 # Choosing OS
-        runs-on: windows-latest
+        runs-on: ubuntu-20.04 # Choosing OS
+        # runs-on: windows-latest
         strategy:
             matrix:
                 node-version: [14.17.0]
@@ -16,33 +16,32 @@ jobs:
               uses: actions/setup-node@v2
               with:
                   node-version: ${{ matrix.node-version }}
-                  cache: "npm"
 
             - name: update node manager
               run: npm i npm@latest
 
-            - name: install all dependencies
-              run: npm i
+            # - name: install all dependencies
+            #   run: npm i
 
-            - name: Start tests
-              run: npm run cypress:execution
+            # - name: Start tests
+            #   run: npm run cypress:execution
 
-            - name: Generate report
-              if: always()
-              run: node cucumber-html-report.js
+            # - name: Generate report
+            #   if: always()
+            #   run: node cucumber-html-report.js
 
-            - name: Upload artifact cucumber html report
-              uses: actions/upload-artifact@v2
-              if: always()
-              with:
-                  name: UPLOAD-cucumber-report
-                  path: reports/cucumber-htmlreport/
+            # - name: Upload artifact cucumber html report
+            #   uses: actions/upload-artifact@v2
+            #   if: always()
+            #   with:
+            #       name: UPLOAD-cucumber-report
+            #       path: reports/cucumber-htmlreport/
 
-            - name: Deploy report
-              uses: JamesIves/github-pages-deploy-action@3.1.0
-              if: always()
-              with:
-                  ACCESS_TOKEN: ${{'secrets.ACCESS_TOKEN'}}
-                  BRANCH: master # The branch the action should deploy to.
-                  FOLDER: reports/cucumber-htmlreport/ # The folder the action should deploy.
-                  TARGET_FOLDER: docs
+            # - name: Deploy report
+            #   uses: JamesIves/github-pages-deploy-action@3.1.0
+            #   if: always()
+            #   with:
+            #       ACCESS_TOKEN: ${{'secrets.ACCESS_TOKEN'}}
+            #       BRANCH: master # The branch the action should deploy to.
+            #       FOLDER: reports/cucumber-htmlreport/ # The folder the action should deploy.
+            #       TARGET_FOLDER: docs
