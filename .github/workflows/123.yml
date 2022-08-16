@@ -17,8 +17,8 @@ jobs:
               with:
                   node-version: ${{ matrix.node-version }}
                   cache: "npm"
-            # - name: copy reports
-            #   run: cp ./cucumber-messages.ndjson cucumber-report
+            - name: copy reports
+              run: cp ./cucumber-messages.ndjson cucumber-report
             - run: ls #cp -r cucumber-report.html cucumber-report
             - name: Upload artifact cucumber-report
               uses: actions/upload-artifact@v3
