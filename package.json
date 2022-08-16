@@ -1,23 +1,31 @@
 {
-  "name": "cypress-cucumber",
-  "version": "1.0.0",
-  "description": "Cypress project with cucumber support. Contain html report.",
-  "main": "index.js",
-  "directories": {
-    "doc": "docs"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/AZANIR/cypress-cucumber.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/AZANIR/cypress-cucumber/issues"
-  },
-  "homepage": "https://github.com/AZANIR/cypress-cucumber#readme"
+    "name": "cypress-cucumber",
+    "scripts": {
+        "cypress:open": "cypress open",
+        "cypress:run": "npx cypress run",
+        "cypress:config": "npx cypress run --config-file config/config.js"
+    },
+    "html": {
+        "enabled": true
+    },
+    "reportDir": "docs/reports",
+    "devDependencies": {
+        "@cucumber/cucumber": "^8.5.1",
+        "@cypress/browserify-preprocessor": "^3.0.2",
+        "cucumber-html-reporter": "^5.5.0",
+        "cypress": "^10.4.0",
+        "cypress-cucumber-preprocessor": "^4.3.1",
+        "cypress-mochawesome-reporter": "^3.2.2"
+    },
+    "cypress-cucumber-preprocessor": {
+        "nonGlobalStepDefinitions": true,
+        "html": {
+            "enabled": true,
+            "outputFolder": "cucumber-report"
+        }
+    },
+    "dependencies": {
+        "@badeball/cypress-cucumber-preprocessor": "^12.0.1",
+        "@cucumber/html-formatter": "^19.2.0"
+    }
 }
