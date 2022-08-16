@@ -7,8 +7,8 @@ jobs:
     post-changelog:
         runs-on: ubuntu-latest
         steps:
-            - name: copy reports
-              run: cp ./cucumber-messages.ndjson cucumber-report
+            # - name: copy reports
+            #   run: cp ./cucumber-messages.ndjson cucumber-report
             - run: cp ./cucumber-report.html cucumber-report
             - name: Upload artifact cucumber-report
               uses: actions/upload-artifact@v3
