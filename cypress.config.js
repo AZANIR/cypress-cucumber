@@ -1,36 +1,35 @@
 const { defineConfig } = require("cypress");
-const preprocessor = require("@badeball/cypress-cucumber-preprocessor");
-const browserify = require("@badeball/cypress-cucumber-preprocessor/browserify");
+const createBundler = require("@bahmutov/cypress-esbuild-preprocessor");
+const addCucumberPreprocessorPlugin =
+    require("@badeball/cypress-cucumber-preprocessor").addCucumberPreprocessorPlugin;
+const createEsbuildPlugin =
+    require("@badeball/cypress-cucumber-preprocessor/esbuild").createEsbuildPlugin;
 
-async function setupNodeEvents(on, config) {
-    await preprocessor.addCucumberPreprocessorPlugin(on, config);
-
-    on("file:preprocessor", browserify.default(config));
-
-    // Make sure to return the config object as it might have been modified by the plugin.
-    return config;
-}
+//If using this approach, just call the key "setupNodeEvents" in the E2E configurations
+// async function setupNodeEvents(on, config) {
+//   await addCucumberPreprocessorPlugin(on, config);
+//   on(
+//     "file:preprocessor",
+//     createBundler({
+//       plugins: [createEsbuildPlugin(config)],
+//     })
+//   );
+//   return config;
+// }
 
 module.exports = defineConfig({
     e2e: {
-        specPattern: "**/*.feature",
-        supportFile: false,
-        setupNodeEvents,
-        reporter: "cypress-mochawesome-reporter",
-        reporterOptions: {
-            reportDir: "cucumber-report",
-            charts: true,
-            reportPageTitle: "My Test Suite",
-            embeddedScreenshots: true,
-            inlineAssets: true,
+        async setupNodeEvents(on, config) {
+            const bundler = createBundler({
+                plugins: [createEsbuildPlugin(config)],
+            });
+
+            on("file:preprocessor", bundler);
+            await addCucumberPreprocessorPlugin(on, config);
+            return config;
         },
-        video: false,
-        devServer: {
-            delay: 500,
-            force404: false,
-            ignore: (xhr) => {
-                return true;
-            },
-        },
+        specPattern: "cypress/e2e/features/*.feature",
+        baseUrl: "https://www.saucedemo.com",
+        chromeWebSecurity: false,
     },
 });

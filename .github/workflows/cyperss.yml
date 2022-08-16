@@ -1,0 +1,45 @@
+name: GH-Actions-Cypress-Cucumber
+
+on:
+    push:
+        branches: ["main", "master"]
+
+    # Allows you to run this workflow manually from the Actions tab
+    workflow_dispatch:
+
+jobs:
+    cypress-run:
+        runs-on: ubuntu-latest
+        # runs-on: windows-latest
+
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
+            - uses: actions/setup-node@v2
+              with:
+                  node-version: "14.x"
+            - name: Install dependencies
+              run: npm i
+
+            - name: Start tests
+              run: npm run cypress:execution
+
+            - name: Generate report
+              if: always()
+              run: node cucumber-html-report.js
+
+            - name: Upload artifact cucumber html report
+              uses: actions/upload-artifact@v2
+              if: always()
+              with:
+                  name: UPLOAD-cucumber-report
+                  path: reports/cucumber-htmlreport/
+
+            - name: Deploy report
+              uses: JamesIves/github-pages-deploy-action@3.1.0
+              if: always()
+              with:
+                  ACCESS_TOKEN: ${{'secrets.ACCESS_TOKEN'}}
+                  BRANCH: master # The branch the action should deploy to.
+                  FOLDER: reports/cucumber-htmlreport/ # The folder the action should deploy.
+                  TARGET_FOLDER: docs

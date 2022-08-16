@@ -1,31 +1,23 @@
 {
-    "name": "cypress-cucumber",
+    "name": "cypress-cucumber-boilerplate",
+    "version": "2.0.0",
+    "description": "This project is meant to be a kind of template to start working with Cucumber and Cypress just cloning the project.",
+    "main": "index.js",
     "scripts": {
-        "cypress:open": "cypress open",
-        "cypress:run": "npx cypress run",
-        "cypress:config": "npx cypress run --config-file config/config.js"
+        "cypress:runner": "cypress open",
+        "cypress:execution": "cypress run",
+        "report": "node cucumber-html-report.js"
     },
-    "html": {
-        "enabled": true
-    },
-    "reportDir": "docs/reports",
+    "keywords": [
+        "cypress"
+    ],
+    "author": "cucumber",
+    "license": "ISC",
     "devDependencies": {
-        "@cucumber/cucumber": "^8.5.1",
-        "@cypress/browserify-preprocessor": "^3.0.2",
-        "cucumber-html-reporter": "^5.5.0",
-        "cypress": "^10.4.0",
-        "cypress-cucumber-preprocessor": "^4.3.1",
-        "cypress-mochawesome-reporter": "^3.2.2"
-    },
-    "cypress-cucumber-preprocessor": {
-        "nonGlobalStepDefinitions": true,
-        "html": {
-            "enabled": true,
-            "outputFolder": "cucumber-report"
-        }
-    },
-    "dependencies": {
         "@badeball/cypress-cucumber-preprocessor": "^12.0.1",
-        "@cucumber/html-formatter": "^19.2.0"
+        "@bahmutov/cypress-esbuild-preprocessor": "^2.1.3",
+        "cypress": "^10.4.0",
+        "esbuild": "^0.14.48",
+        "multiple-cucumber-html-reporter": "^1.21.4"
     }
 }
