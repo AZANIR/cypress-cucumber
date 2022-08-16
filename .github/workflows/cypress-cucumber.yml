@@ -15,7 +15,7 @@ jobs:
               uses: actions/setup-node@v2
               with:
                   node-version: ${{ matrix.node-version }}
-                  cache: "npm"
+                  # cache: "npm"
             - name: update node manager
               run: npm i npm@latest
             - name: install all dependencies
