@@ -30,18 +30,18 @@ jobs:
               if: always()
               run: node cucumber-html-report.js
 
-            # - name: Upload artifact cucumber html report
-            #   uses: actions/upload-artifact@v2
-            #   if: always()
-            #   with:
-            #       name: UPLOAD-cucumber-report
-            #       path: reports/cucumber-htmlreport/
+            - name: Upload artifact cucumber html report
+              uses: actions/upload-artifact@v2
+              if: always()
+              with:
+                  name: UPLOAD-cucumber-report
+                  path: reports/cucumber-htmlreport/
 
-            # - name: Deploy report
-            #   uses: JamesIves/github-pages-deploy-action@3.1.0
-            #   if: always()
-            #   with:
-            #       ACCESS_TOKEN: ${{'secrets.ACCESS_TOKEN'}}
-            #       BRANCH: master # The branch the action should deploy to.
-            #       FOLDER: reports/cucumber-htmlreport/ # The folder the action should deploy.
-            #       TARGET_FOLDER: docs
+            - name: Deploy report
+              uses: JamesIves/github-pages-deploy-action@3.1.0
+              if: always()
+              with:
+                  ACCESS_TOKEN: ${{'secrets.ACCESS_TOKEN'}}
+                  BRANCH: master # The branch the action should deploy to.
+                  FOLDER: reports/cucumber-htmlreport/ # The folder the action should deploy.
+                  TARGET_FOLDER: docs
