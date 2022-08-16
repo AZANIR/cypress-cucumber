@@ -15,9 +15,10 @@ jobs:
               uses: actions/setup-node@v2
               with:
                   node-version: ${{ matrix.node-version }}
-                  cache: "npm"
+
             - name: update node manager
               run: npm i npm@latest
+
             - name: install all dependencies
               run: npm i
             # - name: Install Cypress
@@ -30,9 +31,11 @@ jobs:
             #   run: npm install multiple-cucumber-html-reporter --save-dev
             - name: run test
               run: npm run cypress:run
+
             - name: Generate reports
               if: always()
               run: npm run cypress:report
+
             - name: Upload artifact cucumber-report
               uses: actions/upload-artifact@v3
               if: always()
@@ -40,6 +43,7 @@ jobs:
                   name: cucumber-report
                   path: ./reports/cucumber-htmlreport
                   retention-days: 5
+
             - name: Deploy to pages
               if: always()
               uses: peaceiris/actions-gh-pages@v3.7.3
