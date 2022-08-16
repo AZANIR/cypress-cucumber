@@ -10,7 +10,7 @@ report.generate({
         device: "Local test machine",
         platform: {
             name: "Windows",
-            version: "11",
+            version: "10",
         },
     },
 });
