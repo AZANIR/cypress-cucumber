@@ -28,6 +28,7 @@ jobs:
                   path: cucumber-*.*
                   retention-days: 5
             - name: Deploy 🚀
+              if: always()
               uses: JamesIves/github-pages-deploy-action@v4
               with:
                   folder: docs
