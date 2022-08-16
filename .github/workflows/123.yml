@@ -8,7 +8,8 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: copy reports
-              run: cp -R ./cucumber-*.* cucumber-report
+              run: cp -R ./cucumber-messages.ndjson cucumber-report
+            - run: cp -R ./cucumber-report.html cucumber-report
             - name: Upload artifact cucumber-report
               uses: actions/upload-artifact@v3
               if: always()
