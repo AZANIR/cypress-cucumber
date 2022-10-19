@@ -20,7 +20,7 @@ Given('I am on the Telnyx page and click the cookies', () => {
   base.navigate();
   base.CookiesButton.click();
 });
-//Scenario#1
+
 When('I click on the “Network” link', async() => {
   explore.NetworkLink.click({force: true});
 });
@@ -36,7 +36,7 @@ Then('I scroll into “Send mission-critical messages with confidence” text', 
 Then('I verify the text on the page', async () => {
   explore.Text.should('include.text', 'Reach users at scale wherever they are in the world' );
 });
-//Scenario#2
+
 When('I click on the “See all Solution” link', async() => {
   postman.SeeAllSolutionLink.click({force: true});
 });
@@ -52,7 +52,7 @@ Then('I scroll into “Run in Postman” button', async () => {
 Then('I verify the text on the page of “Purchase Numbers with our API“ page', async () => {
   postman.Text.should('include.text', 'Prior to the import' );
 });
-//Scenario#3
+
 When('I click on the “Savings Calculator” link', async() => {
   calculator.SavingsCalculatorLink.click({force: true});
 });
@@ -73,7 +73,7 @@ Then('I click again on the “Continue” button', async () => {
 Then('I verify the text on the “Calculator” page', async () => {
   calculator.Text.should('include.text', '$' );
 });
-//Scenario#4
+
 When('I click on the “Integrations” link', async() => {
   integrations.IntegrationsLink.click({force: true});
 });
@@ -91,7 +91,7 @@ Then('I click on search query', async () => {
 Then('I verify the text on the “Integration Marketplace” page', async () => {
   integrations.Text.should('include.text', 'Volt Integration' );
 });
-//Scenario#5
+
 When('I click on the “Developer Docs” link', async() => {
   helpfulInput.DeveloperDocsLink.click({force: true});
 });
@@ -108,7 +108,7 @@ Then('I click on the “Setup Media Storage” button', async () => {
 Then('I take a screenshot of the “Setup Media Storage” page', async () => {
   cy.screenshot('Testcase5');
 });
-//Scenario#6
+
 When('I click on the “Developer Docs” link on the developer docs', async() => {
   development.DeveloperDocsLink.click({force: true});
 });
@@ -129,7 +129,7 @@ Then('I click on the “PHP” button', async () => {
 Then('I verify the text on the “Development” page', async () => {
   development.Text.should('include.text', 'Obtain your API keys' );
 });
-//Scenario#7
+
 When('I scroll and click into “Report Abuse” link', async() => {
   base.scrollandclick(reportabuseform.ReportAbuseLink);
 });
@@ -148,7 +148,7 @@ Then('I click on the Submit button', async () => {
 Then('I take a screenshot of the form', async () => {
   cy.screenshot('Testcase7');
 });
-//Scenario#8
+
 When('I scroll and click into “Data & Privacy” link', async() => {
   base.scrollandclick(compliance.PrivacyLink);
 });
@@ -161,7 +161,7 @@ Then('I scroll and click into “Step 1: Know your transfer” button', async ()
 Then('I verify the text on the “Compliance” page', async () => {
   compliance.Text.should('include.text', 'GDPR stands for the General Data Protection Regulation');
 });
-//Scenario#9
+
 When('I scroll and click into “Release Notes” link', async() => {
   base.scrollandclick(releasenotes.ReleaseNotesLink);
 });
@@ -171,7 +171,7 @@ Then('I scroll and click into “Telnyx adds AnchorSite™ Point of Presence in 
 Then('I verify the link of the “Telnyx adds AnchorSite™ Point of Presence in Miami” page', async () => {
   cy.url().should('include', 'anchorsite-point-of-presence');
 });
-//Scenario#10
+
 When('I click on the “See all Use Cases” link', async() => {
   ltenetworks.SeeAllUseCasesLink.click({force: true});
 });
@@ -184,7 +184,7 @@ Then('I scroll and click into the “private LTE networks” link', async () => 
 Then('I take a screenshot of the “private LTE networks” page', async () => {
   cy.screenshot('Testcase10');
 });
-//Scenario#11
+
 When('I click on the “Blog” link', async() => {
   videopage.BlogLink.click({force: true});
 });
@@ -204,7 +204,7 @@ Then('I scroll and click on the “WebRTC Video Chat and Streaming Explained” 
 Then('I take a screenshot of the “VIDEO” page', async () => {
   cy.screenshot('Testcase11');
 });
-//Scenario#12
+
 When('I click on the “See all Products” link', async() => {
   webrtc.SeeAllProductsLink.click({force: true});
 });
@@ -220,7 +220,7 @@ Then('I scroll into the “webrtc” link', async () => {
 Then('I verify the text on the “Guide” page', async () => {
   webrtc.Text.should('include.text', 'Follow-ups');
 });
-//Scenario#13
+
 When('I click on the “Developer Docs” link of Deploy', async() => {
   developerbuttons.DeveloperDocsLink.click({force: true});
 });
@@ -236,7 +236,7 @@ Then('I click on the “Send Message” button', async () => {
 Then('I take a screenshot of the buttons on “Developer Docs” page', async () => {
   cy.screenshot('Testcase13');
 });
-//Scenario#14
+
 When('I click on the “Developer Docs” link of Net', async() => {
   net.DeveloperDocsLink.click({force: true});
 });
@@ -260,7 +260,7 @@ Then('I click on the “.NET” button', async () => {
 Then('I verify the text on the Net button', async () => {
   net.Text.should('include.text', 'TelnyxConfiguration.SetApiKey');
 });
-//Scenario#15
+
 When('I click on the “Customer Stories” link', async() => {
   tollfreenumbers.CustomerStories.click({force: true});
 });
